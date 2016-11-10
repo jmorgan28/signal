@@ -6,6 +6,6 @@ run: sigtest
 
 clean:
 	rm sigtest
-	rm *.exe
 	rm *~
 	rm *dump 
+	rm *txt
