@@ -1,17 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 
-void loop(){
-  while(1){
-  printf("%d\n", getpid());
-  sleep(1);
+static void sighandler (int signo){
+  if(signo == SIGINT){
+    printf("seen");
+    exit(0);
   }
 }
 
 
+
+
 int main(){
-  loop();
+  while(1){
+    signal(SIGINT, sighandler);
+    printf("%d\n", getpid());
+    sleep(1);
+  }
+  
 
   return 0;
 }
